@@ -4,7 +4,8 @@ console.log("We're connected!");
 
 function onReady(){
   // click events
-  $('.button').on('click', createBox);
+  $('.addBtn').on('click', createBox);
+  $('.removeAllBtn').on('click', removeAll);
   $('.container').on('click', '.box', colorBox);
   $('.container').on('click', '.remove', removeBox);  //you could also use $(document) in place of .container
 }
@@ -13,6 +14,7 @@ function createBox(){
   var $box = $('<div class="box">' + '<button class="remove">X</button>' + "</div>"); //this creates a jquery object (creates both opening and closing tags)
   $('.container').append($box);
 
+  // call newColor function and pass the new box.
   newColor($box);
 
   function newColor(newBox){
@@ -31,4 +33,8 @@ function colorBox(){
 
 function removeBox(){
   $(this).parent().fadeOut(500);
+}
+
+function removeAll() {
+  $('.box').fadeOut(500);
 }
