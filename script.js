@@ -3,34 +3,30 @@ $(onReady);
 console.log("We're connected!");
 
 function onReady(){
-
   // click events
   $('.button').on('click', createBox);
   $('.container').on('click', '.box', colorBox);
-  $('.container').on('click', '.remove', removeBox);
+  $('.container').on('click', '.remove', removeBox);  //you could also use $(document) in place of .container
 }
 
+function createBox(){
+  var $box = $('<div class="box">' + '<button class="remove">X</button>' + "</div>"); //this creates a jquery object (creates both opening and closing tags)
+  $('.container').append($box);
 
-  function createBox(){
+  newColor($box);
 
-    var $box = $('<div class="box">' + '<button class="remove">X</button>' + "</div>"); //this creates a jquery object (creates both opening and closing tags)
-    $('.container').append($box);
-
-    var colorArray = ['red','orange','yellow','green','blue','purple', 'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'BlueViolet', 'Brown', 'chocolate', 'coral', 'cornsilk', 'crimson', 'cyan', ];
-    var randNum = randomNumber(0, colorArray.length - 1);
-    newColor($box);
-
-    function newColor(newBox){
-      $(newBox).css('background', colorArray[randNum]);
-    }
+  function newColor(newBox){
+    // generate random numbers
+    var colorR = Math.floor((Math.random() * 256));
+    var colorG = Math.floor((Math.random() * 256));
+    var colorB = Math.floor((Math.random() * 256));
+    // assign random numbers to the new box
+    $(newBox).css('background', "rgb(" + colorR + "," + colorG + "," + colorB + ")");
   }
+}
 
-  function colorBox(){
-    $(this).css('background', 'black');
-  }
-
-  function randomNumber(min, max){
-    return Math.floor(Math.random() * (1 + max - min) + min);
+function colorBox(){
+  $(this).css('background', 'black');
 }
 
 function removeBox(){
