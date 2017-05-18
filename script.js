@@ -12,13 +12,12 @@ function onReady(){
 
 
   function createBox(){
-    console.log("were inside the createBox function");
 
     var $box = $('<div class="box">' + '<button class="remove">X</button>' + "</div>"); //this creates a jquery object (creates both opening and closing tags)
     $('.container').append($box);
 
-    var colorArray=['red','orange','yellow','green','blue','purple'];
-    var randNum = randomNumber(0, 5);
+    var colorArray = ['red','orange','yellow','green','blue','purple', 'AliceBlue', 'AntiqueWhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'BlueViolet', 'Brown', 'chocolate', 'coral', 'cornsilk', 'crimson', 'cyan', ];
+    var randNum = randomNumber(0, colorArray.length - 1);
     newColor($box);
 
     function newColor(newBox){
@@ -27,7 +26,6 @@ function onReady(){
   }
 
   function colorBox(){
-    console.log('in colorBox');
     $(this).css('background', 'black');
   }
 
@@ -36,6 +34,5 @@ function onReady(){
 }
 
 function removeBox(){
-  console.log('remove box');
-  $(this).parent().remove();
+  $(this).parent().fadeOut(500);
 }
