@@ -1,0 +1,11 @@
+.box {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.remove {
+  z-index: 10;
+}
